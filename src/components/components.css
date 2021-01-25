@@ -15,6 +15,7 @@ section .wrapper {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
 @media only screen and (max-width: 768px) {
@@ -80,6 +81,7 @@ input {
   font-size: 20px;
   border-radius: 20px;
   border: 2px solid #000000;
+  outline: none;
 }
 
 .button {
@@ -102,27 +104,29 @@ input {
 .split {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .split > div {
   flex-grow: 0;
-}
-.split > div:first-child {
-  margin: 0 16px 0 0;
-}
-.split > div:last-child {
-  margin: 0 0 0 16px;
+  padding: 0 8px;
+  box-sizing: border-box;
 }
 
 .split-60 {
   width: 60%;
 }
-.split-40 {
-  width: 40%;
+.split-50 {
+  width: 50%;
+}
+.split-33 {
+  width: 33.33%;
 }
 
 .split img {
   max-width: 100%;
+  margin: 0 auto;
+  display: block;
 }
 
 @media only screen and (max-width: 768px) {
@@ -131,7 +135,8 @@ input {
   }
 
   .split-60,
-  .split-40 {
+  .split-50,
+  .split-33 {
     width: 100%;
   }
 
@@ -146,12 +151,8 @@ input {
 /* Hero */
 .hero {
   width: 100%;
-  height: calc(100vh - 96px);
+  height: 100vh;
   background: #6023a7;
-  /* background-color: #DCDBD7; */
-  /* background-image: url("../images/hero.webp"); */
-  background-size: cover;
-  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -202,30 +203,11 @@ input {
 }
 
 @media only screen and (max-width: 768px) {
-  .hero {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .hero p {
     max-width: 100%;
     padding: 0 16px 16px;
     font-size: 20px;
     box-sizing: border-box;
-  }
-
-  .hero .hero-logo {
-    position: relative;
-    width: 50vw;
-    height: 50vw;
-    z-index: 1;
-  }
-
-  .hero .hero-logo:after {
-    display: none;
-  }
-  .hero .hero-logo:before {
-    width: 100%;
   }
 }
 
@@ -286,9 +268,18 @@ input {
   }
 }
 
+.secret {
+  opacity: 1;
+  transition-duration: 2s;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+  overflow: hidden;
+}
 
-@media only screen and (max-width: 768px) {
-  .hero {
-    height: calc(100vh - 72px);
-  }
+.secret-hidden {
+  overflow: hidden;
+  opacity: 0;
+  height: 0;
+  z-index: -1;
 }
